@@ -1,0 +1,19 @@
+{
+  "name": "caScore",
+  "base": "PersistedModel",
+  "properties": {
+    "value": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "attribute": {
+      "type": "belongsTo",
+      "model": "attribute",
+      "foreignKey": "attributeId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

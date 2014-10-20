@@ -1,0 +1,47 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><h5>Add/Edit Attribute</h5></div>
+    <div class="panel-body">
+        <div class="input-group">
+            <span class="input-group-addon">ID</span>
+            <input type="text" class="form-control" ng-model="attribute._id" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <input type="text" class="form-control" ng-model="attribute.name" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Desc</span>
+            <input type="text" class="form-control" ng-model="attribute.desc" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Matching</span>
+            <input type="text" class="form-control" ng-model="attribute.matching" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Label Min</span>
+            <input type="text" class="form-control" ng-model="attribute.labelMin" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Label Max</span>
+            <input type="text" class="form-control" ng-model="attribute.labelMax" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Form Ctrl</span>
+            <input type="text" class="form-control" ng-model="attribute.formCtrl" placeholder="">
+        </div>
+        <br/>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="saveAttribute()">Save</button>
+    </div>
+</div>

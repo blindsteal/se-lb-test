@@ -1,0 +1,8 @@
+node_modules
+.tmp
+.idea
+.vagrant
+client/bower_components
+dist
+.esproj
+*.espressostorage

@@ -1,0 +1,75 @@
+<div class="panel panel-primary">
+    <div class="panel-heading"><h5>Add/Edit Category</h5></div>
+    <div class="panel-body">
+        <div class="input-group">
+            <span class="input-group-addon">ID</span>
+            <input type="text" class="form-control" ng-model="category._id" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <input type="text" class="form-control" ng-model="category.name" placeholder="">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Desc</span>
+            <input type="text" class="form-control" ng-model="category.desc" placeholder="">
+        </div>
+        <br/>
+
+        <div ng-repeat="attribute in category.attributes">
+            <div class="input-group">
+                <span class="input-group-addon">{{attribute.attribute}}</span>
+                <input type="text" class="form-control" ng-model="attribute.value" placeholder="">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="removeAttribute(category, attribute)"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                    </span>
+            </div>
+            <br/>
+        </div>
+        <div ng-repeat="intention in category.intentions">
+            <div class="input-group">
+                <span class="input-group-addon">Intention</span>
+                <input type="text" class="form-control" ng-model="intention" placeholder="">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="removeIntention(category, intention)"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                    </span>
+            </div>
+            <br/>
+        </div>
+        <p>Add new attribute:</p>
+
+        <div class="input-group">
+            <span class="input-group-addon">ID</span>
+            <input type="text" class="form-control" ng-model="attributeToAdd.attribute" placeholder=""
+                   typeahead="attribute._id as attribute._id for attribute in data.attributes | filter:$viewValue | limitTo:8"
+                   typeahead-wait-ms="200">
+        </div>
+        <br/>
+
+        <div class="input-group">
+            <span class="input-group-addon">Value</span>
+            <input type="text" class="form-control" ng-model="attributeToAdd.value" placeholder="">
+        </div>
+        <br/>
+
+        <p>Add new intention:</p>
+
+        <div class="input-group">
+            <span class="input-group-addon">ID</span>
+            <input type="text" class="form-control" ng-model="intentionToAdd" placeholder=""
+                   typeahead="intention._id as intention._id for intention in data.intentions | filter:$viewValue | limitTo:8"
+                   typeahead-wait-ms="200">
+        </div>
+        <br/>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="addAttribute(category)"><span
+                class="glyphicon glyphicon-plus"></span> Attribute
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="addIntention(category)"><span
+                class="glyphicon glyphicon-plus"></span> Intention
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="saveCategory()">Save</button>
+    </div>
+</div>

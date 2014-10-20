@@ -1,0 +1,27 @@
+{
+  "name": "category",
+  "base": "PersistedModel",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "scores": {
+      "type": "hasMany",
+      "model": "caScore",
+      "foreignKey": "categoryId"
+    },
+    "intentions": {
+      "type": "hasAndBelongsToMany",
+      "model": "intention",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
