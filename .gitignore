@@ -6,3 +6,6 @@ client/bower_components
 dist
 .esproj
 *.espressostorage
+docular_generated
+client/js/lb-services.js
+downloaded

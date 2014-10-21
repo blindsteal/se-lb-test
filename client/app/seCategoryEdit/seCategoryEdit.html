@@ -3,7 +3,7 @@
     <div class="panel-body">
         <div class="input-group">
             <span class="input-group-addon">ID</span>
-            <input type="text" class="form-control" ng-model="category._id" placeholder="">
+            <input type="text" class="form-control" ng-model="category.id" placeholder="">
         </div>
         <br/>
 
@@ -44,7 +44,7 @@
         <div class="input-group">
             <span class="input-group-addon">ID</span>
             <input type="text" class="form-control" ng-model="attributeToAdd.attribute" placeholder=""
-                   typeahead="attribute._id as attribute._id for attribute in data.attributes | filter:$viewValue | limitTo:8"
+                   typeahead="attribute.id as attribute.id for attribute in data.attributes | filter:$viewValue | limitTo:8"
                    typeahead-wait-ms="200">
         </div>
         <br/>
@@ -60,7 +60,7 @@
         <div class="input-group">
             <span class="input-group-addon">ID</span>
             <input type="text" class="form-control" ng-model="intentionToAdd" placeholder=""
-                   typeahead="intention._id as intention._id for intention in data.intentions | filter:$viewValue | limitTo:8"
+                   typeahead="intention.id as intention.id for intention in data.intentions | filter:$viewValue | limitTo:8"
                    typeahead-wait-ms="200">
         </div>
         <br/>

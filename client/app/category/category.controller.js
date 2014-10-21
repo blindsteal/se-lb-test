@@ -9,15 +9,15 @@ angular.module('vagrantApp')
         $scope.newIntention = undefined;
 
         $scope.loadCategory = function (id) {
-            $scope.newCategory = _.cloneDeep(_.find($scope.data.categories, {_id: id}));
+            $scope.newCategory = _.cloneDeep(_.find($scope.data.categories, {id: id}));
         };
 
         $scope.loadAttribute = function (id) {
-            $scope.newAttribute = _.cloneDeep(_.find($scope.data.attributes, {_id: id}));
+            $scope.newAttribute = _.cloneDeep(_.find($scope.data.attributes, {id: id}));
         };
 
         $scope.loadIntention = function (id) {
-            $scope.newIntention = _.cloneDeep(_.find($scope.data.intentions, {_id: id}));
+            $scope.newIntention = _.cloneDeep(_.find($scope.data.intentions, {id: id}));
         };
 
         $scope.deleteIntention = function(id){

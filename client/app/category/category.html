@@ -6,7 +6,7 @@
     <div class="input-group">
         <span class="input-group-addon">Filter by Attribute</span>
         <input type="text" class="form-control" ng-model="attributeFilter" placeholder=""
-               typeahead="attribute._id as attribute._id for attribute in data.attributes | filter:$viewValue | limitTo:8"
+               typeahead="attribute.id as attribute.id for attribute in data.attributes | filter:$viewValue | limitTo:8"
                typeahead-wait-ms="200">
     </div>
     <br/>
@@ -14,10 +14,10 @@
         <accordion-group ng-repeat="category in data.categories | filter:hasAttribute(attributeFilter) | orderBy:attributeValue(attributeFilter)">
             <accordion-heading>
                 {{category.name}}
-                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="deleteCategory(category._id)">
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="deleteCategory(category.id)">
                     <span class="glyphicon glyphicon-remove-circle"></span> Delete
                 </button>
-                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadCategory(category._id)">
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadCategory(category.id)">
                     <span class="glyphicon glyphicon-edit"></span> Edit
                 </button>
             </accordion-heading>
@@ -34,10 +34,10 @@
             <accordion-heading>
                 {{attribute.name}}
                 <button type="button" class="btn btn-default btn-xs pull-right"
-                        ng-click="deleteAttribute(attribute._id)"><span
+                        ng-click="deleteAttribute(attribute.id)"><span
                         class="glyphicon glyphicon-remove-circle"></span> Delete
                 </button>
-                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadAttribute(attribute._id)">
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadAttribute(attribute.id)">
                     <span class="glyphicon glyphicon-edit"></span> Edit
                 </button>
             </accordion-heading>
@@ -54,10 +54,10 @@
             <accordion-heading>
                 {{intention.name}}
                 <button type="button" class="btn btn-default btn-xs pull-right"
-                        ng-click="deleteIntention(intention._id)"><span
+                        ng-click="deleteIntention(intention.id)"><span
                         class="glyphicon glyphicon-remove-circle"></span> Delete
                 </button>
-                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadIntention(intention._id)">
+                <button type="button" class="btn btn-default btn-xs pull-right" ng-click="loadIntention(intention.id)">
                     <span class="glyphicon glyphicon-edit"></span> Edit
                 </button>
             </accordion-heading>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('vagrantApp')
-  .factory('dataService', function ($http) {
+  .factory('dataService', function ($http, Intention, Attribute, Category, CaScore) {
         var data = {
             intentions: [],
             attributes: [],
@@ -9,19 +9,19 @@ angular.module('vagrantApp')
         };
 
         var updateIntentions = function() {
-            $http.get('/api/finances/intentions').success(function (ints) {
-                data.intentions = ints;
+            Intention.find({}, function(intentions){
+                data.intentions = intentions;
             });
         };
 
         var updateCategories = function () {
-            $http.get('/api/finances/categories').success(function (categories) {
+            Category.find({filter:{include:['intentions', 'scores']}}, function(categories){
                 data.categories = categories;
             });
         };
 
         var updateAttributes = function () {
-            $http.get('/api/finances/attributes').success(function (attributes) {
+            Attribute.find({}, function(attributes){
                 data.attributes = attributes;
             });
         };
@@ -30,57 +30,48 @@ angular.module('vagrantApp')
             if (int === undefined) {
                 return;
             }
-            if (_.contains(_.pluck(data.intentions, '_id'), int._id)) {
-                $http.put('/api/finances/intentions/' + int._id, int);
-            }
-            else {
-                $http.post('/api/finances/intentions', int);
-            }
+            Intention.updateOrCreate(int, function(intention){
+                updateIntentions();
+            });
             int = undefined;
-            updateIntentions();
         };
 
         var submitCategory = function (cat) {
             if (cat === undefined) {
                 return;
             }
-            if (_.contains(_.pluck(data.categories, '_id'), cat._id)) {
-                $http.put('/api/finances/categories/' + cat._id, cat);
-            }
-            else {
-                $http.post('/api/finances/categories', cat);
-            }
+            Category.updateOrCreate(cat, function(category){
+                updateCategories();
+            });
             cat = undefined;
-            updateCategories();
         };
 
         var submitAttribute = function (attr) {
             if (attr === undefined) {
                 return;
             }
-            if (_.contains(_.pluck(data.attributes, '_id'), attr._id)) {
-                $http.put('/api/finances/attributes/' + attr._id, attr);
-            }
-            else {
-                $http.post('/api/finances/attributes', attr);
-            }
+            Attribute.updateOrCreate(attr, function(attribute){
+                updateAttributes();
+            });
             attr = undefined;
-            updateAttributes();
         };
 
         var deleteIntention = function(id){
-            $http.delete('/api/finances/intentions/' + id, null);
-            updateIntentions();
+            Intention.removeById({id: id}, function(removed){
+                updateIntentions();
+            });
         };
 
         var deleteAttribute = function(id){
-            $http.delete('/api/finances/attributes/' + id, null);
-            updateAttributes();
+            Attribute.removeById({id: id}, function(removed){
+                updateAttributes();
+            });
         };
 
         var deleteCategory = function(id){
-            $http.delete('/api/finances/categories/' + id, null);
-            updateCategories();
+            Category.removeById({id: id}, function(removed){
+                updateCategories();
+            });
         };
 
         var getData = function(){

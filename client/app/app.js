@@ -5,6 +5,7 @@ angular.module('vagrantApp', [
   'ngResource',
   'ngSanitize',
   'btford.socket-io',
+  'lbServices',
   'ui.router',
   'ui.bootstrap'
 ])
